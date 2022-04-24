@@ -1,0 +1,102 @@
+
+<!-- https://prismjs.com/index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title of the document</title>
+<link href="./prism.css" rel="stylesheet" />
+  </head>
+  <body>
+<a href="https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript+bash+c+csharp+cpp+django+git+markdown+markup-templating+matlab+mongodb+powershell+python+r+shell-session+sql">style</a>
+    <!-- CODE -->
+    <!--  -->
+<pre><code class="language-python">
+#back>api>views.py
+from django.http import JsonResponse
+
+def api_home(request,*args,**kwargs):
+  return JsonResponse({"message":"hi there , this home for your api"})                 
+</code></pre>
+<!--  -->
+<h2>create inside back > api urls.py</h2>
+<pre><code class="language-python">
+#back>api>urls.py
+from django.urls import path
+
+from . import views #or from .views import api_home
+
+urlpatterns = [
+  path('',views.api_home)
+]
+</code></pre>
+<!--  -->
+<h1>include this urls in main urls</h1>
+<pre><code class="language-python">
+  #main>urls.py
+  from django.contrib import admin
+  from django.urls import path,include
+  
+  urlpatterns = [
+      path('admin/', admin.site.urls),
+      path('api/',include('api.urls'))
+  ]
+</code></pre>
+<!--  -->
+<h1>access params and json </h1>
+<pre><code class="language-python">
+  #back>api>views.py\
+  import json
+  from django.http import JsonResponse
+
+  def api_home(request,*args,**kwargs):
+      data = {}
+      print(request.GET)
+      try:
+        data = json.load(request.body)
+      except:
+        pass
+      return JsonResponse({"message":"hi there , this home for your api"})   
+</code></pre>
+
+<h1>chat </h1>
+<pre><code class="language-python">
+with open('json file\intents.json') as file:
+  data = json.load(file)
+
+words =  [] # array of all words in the pattters ['hi','how','are','you','see','you','later']
+labels = [] # array of all tags uniqe ['greeting','goodbye']
+docs_x = [] # add patters as line [['hi ','how', 'are' ,'you '],['see', 'you',' later']]
+docs_y = [] # for each pattern i will save corrosponse tag
+</code></pre>
+
+
+<h1>title</h1>
+<pre><code class="language-python">
+</code></pre>
+
+            <pre><code class="shell-session">
+              <!--  -->
+              algoliasearch-django>=2.0,<3.0
+              django>=4.0.0,<4.1.0
+              djangorestframework
+              djangorestframework-simplejwt
+              pyyaml
+              requests
+              django-cors-headers
+
+              pip install -r requirement.txt
+
+              djanga-admin startproject name .
+              <!--  -->
+            </code></pre>
+
+
+            <h1>active conda in the cmder shell</h1>
+<pre><code class="shell-session">
+conda.bat activate test
+</code></pre>
+            
+    <!-- END CODE -->
+    <script src="prism.js"></script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title of the document</title>
+    <style>
+      .code-style {
+        font-size: 20px;
+        line-height: 28px;
+        background-color: lightblue;
+	font-family: monospace;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Ordinary text.</p>
+    <code class="code-style">Line of program code.</code>
+    <p>Continuation of the ordinary text.</p>
+  </body>
+</html>
+
+========================================
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+code {
+  font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: #f1f1f1;
+  padding: 2px;
+  font-size: 105%;
+}
+</style>
+</head>
+<body>
+
+<h1>The code element + CSS</h1>
+
+<p>The HTML <code>button</code> tag defines a clickable button.</p>
+<p>The CSS <code>background-color</code> property defines the background color of an element.</p>
+
+</body>
+</html>
