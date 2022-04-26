@@ -20,20 +20,30 @@ import json
 import pickle
 import os
 
+
+
+
+
+
+pathtochat = os.path.join(os.getcwd(),'chat_bot_V1') 
+print("===========",pathtochat)
+
 '''
 delete all files save to force chat to create it 
 '''
 def makeChatTrain():
-    dir = 'model'
+    dir = pathtochat+'model'
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
-    dir = 'data'
+    dir = pathtochat+'data'
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
 
 
+intents_file_path = os.path.join(pathtochat,"intents.json")
 
-with open("intents.json") as file:
+
+with open(intents_file_path) as file:
     data = json.load(file)
 
 '''
@@ -41,7 +51,7 @@ make train data and make model and train it
 '''
 def makeModel():
     try:
-        with open("./data/data.pickle", "rb") as f:
+        with open(pathtochat+"/data/data.pickle", "rb") as f:
             words, labels, training, output = pickle.load(f)
     except:
         words = []
@@ -90,7 +100,7 @@ def makeModel():
         training = numpy.array(training)
         output = numpy.array(output)
 
-        with open("./data/data.pickle", "wb") as f:
+        with open(pathtochat+"/data/data.pickle", "wb") as f:
             pickle.dump((words, labels, training, output), f)
     '''
     tensorflow.reset_default_graph()
@@ -121,11 +131,11 @@ def makeModel():
     #     model.fit(training,output)
     #     model.save("model.tflearn")
     #-------------------------------------------------------------------------------
-    if os.path.exists("./model/model.tflearn.meta"):
-        model.load("./model/model.tflearn")
+    if os.path.exists(pathtochat+"/model/model.tflearn.meta"):
+        model.load(pathtochat+"/model/model.tflearn")
     else:
         model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-        model.save("./model/model.tflearn")   
+        model.save(pathtochat+"/model/model.tflearn")   
     return model,words,labels
 
 '''
@@ -144,7 +154,7 @@ def bag_of_words(s, words):
             
     return numpy.array(bag)
 
-
+model,words,labels = makeModel()
 
 '''
 predict function
@@ -157,8 +167,9 @@ def predict_chat(inp):
     for tg in data["intents"]:
         if tg['tag'] == tag:
             responses = tg['responses']
-
-    print(random.choice(responses))
+    message =random.choice(responses)
+    print("==========",message)
+    return message
 '''
 start chat with the bot in terminal for test with no neet to api requests
 '''
@@ -176,13 +187,14 @@ def chat():
         for tg in data["intents"]:
             if tg['tag'] == tag:
                 responses = tg['responses']
-
-        print(random.choice(responses))
+        message = random.choice(responses)
+        print(message)
+        return message
 
 #
 # get the model and date to start predict
 #
-
-makeChatTrain()
-model,words,labels = makeModel()
-chat()
+# test
+# makeChatTrain()
+# model,words,labels = makeModel()
+# chat()
