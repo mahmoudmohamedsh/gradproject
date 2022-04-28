@@ -1,5 +1,10 @@
 [jwt](https://www.youtube.com/watch?v=AfYfvjP1hK8&t=687s)
+
 [profile](https://www.youtube.com/watch?v=rJ3Gcv2i0as&t=146s)
+
+[flutter jwt](https://dev.to/carminezacc/user-authentication-jwt-authorization-with-flutter-and-node-176l)
+
+[simple jwt website](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/blacklist_app.html)
 
 # user model
 [Learn Django - Build a Custom User Model with Extended Fields](https://www.youtube.com/watch?v=Ae7nc1EGv-A)
