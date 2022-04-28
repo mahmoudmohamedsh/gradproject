@@ -1,3 +1,6 @@
+[jwt](https://www.youtube.com/watch?v=AfYfvjP1hK8&t=687s)
+[profile](https://www.youtube.com/watch?v=rJ3Gcv2i0as&t=146s)
+
 # user model
 [Learn Django - Build a Custom User Model with Extended Fields](https://www.youtube.com/watch?v=Ae7nc1EGv-A)
 

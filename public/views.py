@@ -10,9 +10,9 @@ from django.conf import settings
 import os
 # rotate to the chat bot file to import the files
 pathtochat = os.path.join(settings.BASE_DIR,'chat_bot_V1') 
-import sys
-sys.path.insert(1, pathtochat)
-import test # class contain all require methods to create model , make predections of questions
+# import sys
+# sys.path.insert(1, pathtochat)
+# import test # class contain all require methods to create model , make predections of questions
 
 
 # Create your views here. that handle requests
@@ -37,10 +37,10 @@ class HomeList(APIView):
 
 ###
 # take user question and return the bot answer  
-@api_view(['GET'])
-def api_chatbot(req,*arg,**kwargs):
-    res = test.predict_chat(req.data['message'])
-    return Response({"message":res} , status=status.HTTP_200_OK)
+# @api_view(['GET'])
+# def api_chatbot(req,*arg,**kwargs):
+#     res = test.predict_chat(req.data['message'])
+#     return Response({"message":res} , status=status.HTTP_200_OK)
 
 ###
 # send email from user to us with his email , title and email body 
