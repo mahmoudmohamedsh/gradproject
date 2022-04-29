@@ -1,3 +1,11 @@
+[JWT](#jwt-token)
+    
+
+
+
+
+
+
 # user model
 [Learn Django - Build a Custom User Model with Extended Fields](https://www.youtube.com/watch?v=Ae7nc1EGv-A)
 
@@ -62,3 +70,13 @@ def uploat_to(instance , filename):
 
 
 ```
+
+
+
+
+# JWT Token
+
+#### video
+[Django Rest Framework Series - JWT Token Authentication with React - Part-3](https://www.youtube.com/watch?v=AfYfvjP1hK8&list=PLOLrQ9Pn6caw0PjVwymNc64NkUNbZlhFw&index=8)
+
+

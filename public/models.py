@@ -9,8 +9,8 @@ class Announcement(models.Model):
      
     title = models.CharField(max_length=255,default="")
     img = models.ImageField(null = True , blank = True,upload_to = uploat_to, default='')
-    created_at = models.DateTimeField(default=timezone.now)
-    # created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    # created_at = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True, null=False)
 
     def __str__(self) :
         return str(self.created_at)

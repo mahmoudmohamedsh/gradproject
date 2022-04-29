@@ -1,2 +1,2 @@
-model_checkpoint_path: "H:\\temp\\model\\model.tflearn"
-all_model_checkpoint_paths: "H:\\temp\\model\\model.tflearn"
+model_checkpoint_path: "E:\\graduate project\\api\\gradproject\\chat_bot_V1/model/model.tflearn"
+all_model_checkpoint_paths: "E:\\graduate project\\api\\gradproject\\chat_bot_V1/model/model.tflearn"

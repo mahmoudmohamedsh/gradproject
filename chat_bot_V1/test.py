@@ -21,26 +21,22 @@ import pickle
 import os
 
 
-
-
-
-
-pathtochat = os.path.join(os.getcwd(),'chat_bot_V1') 
+pathtochat = os.path.join(os.getcwd()) 
 print("===========",pathtochat)
 
 '''
 delete all files save to force chat to create it 
 '''
 def makeChatTrain():
-    dir = pathtochat+'model'
+    dir = os.path.join(pathtochat,'model') 
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
-    dir = pathtochat+'data'
+    dir = os.path.join(pathtochat,'data') 
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
 
 
-intents_file_path = os.path.join(pathtochat,"intents.json")
+intents_file_path = os.path.join(pathtochat,"chat_bot_V1","intents.json")
 
 
 with open(intents_file_path) as file:
@@ -49,9 +45,11 @@ with open(intents_file_path) as file:
 '''
 make train data and make model and train it 
 '''
+data_path = os.path.join(pathtochat,"chat_bot_V1","data","data.pickle")
+model_path = os.path.join(pathtochat,"chat_bot_V1","model")
 def makeModel():
     try:
-        with open(pathtochat+"/data/data.pickle", "rb") as f:
+        with open(data_path, "rb") as f:
             words, labels, training, output = pickle.load(f)
     except:
         words = []
@@ -100,7 +98,7 @@ def makeModel():
         training = numpy.array(training)
         output = numpy.array(output)
 
-        with open(pathtochat+"/data/data.pickle", "wb") as f:
+        with open(data_path, "wb") as f:
             pickle.dump((words, labels, training, output), f)
     '''
     tensorflow.reset_default_graph()
@@ -131,11 +129,11 @@ def makeModel():
     #     model.fit(training,output)
     #     model.save("model.tflearn")
     #-------------------------------------------------------------------------------
-    if os.path.exists(pathtochat+"/model/model.tflearn.meta"):
-        model.load(pathtochat+"/model/model.tflearn")
+    if os.path.exists(model_path+"/model.tflearn.meta"):
+        model.load(model_path+"/model.tflearn")
     else:
         model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-        model.save(pathtochat+"/model/model.tflearn")   
+        model.save(model_path+"/model.tflearn")   
     return model,words,labels
 
 '''
@@ -154,7 +152,7 @@ def bag_of_words(s, words):
             
     return numpy.array(bag)
 
-model,words,labels = makeModel()
+
 
 '''
 predict function
@@ -196,5 +194,5 @@ def chat():
 #
 # test
 # makeChatTrain()
-# model,words,labels = makeModel()
+model,words,labels = makeModel()
 # chat()

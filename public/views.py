@@ -19,6 +19,7 @@ import test # class contain all require methods to create model , make predectio
 
 ###
 # class for handle the list of announcement and the add announcement requests
+# url => /home/
 class HomeList(APIView):
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
@@ -37,13 +38,18 @@ class HomeList(APIView):
 
 ###
 # take user question and return the bot answer  
+# url => /home/chat
 @api_view(['GET'])
 def api_chatbot(req,*arg,**kwargs):
-    res = test.predict_chat(req.data['message'])
+    # res = test.predict_chat(req.data['message']) # for post request
+    if(not req.GET.get("message")):
+        return Response({"error":"missing the message"} , status=status.HTTP_400_BAD_REQUEST)
+    res = test.predict_chat(req.GET.get("message"))
     return Response({"message":res} , status=status.HTTP_200_OK)
 
 ###
 # send email from user to us with his email , title and email body 
+# url => /home/mail
 from django.core.mail import EmailMessage , send_mail
 from django.template.loader import render_to_string
 @api_view(['POST'])

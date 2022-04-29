@@ -41,7 +41,7 @@ SECRET_KEY = 'django-insecure-(wnjxgc9ql_-!ty#8kfsnnwgk=7lw5h0d*e!&51wt3xb-%sxcb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.0.2.2', '127.0.0.1']
 
 ###
 # change default auth class to our class
