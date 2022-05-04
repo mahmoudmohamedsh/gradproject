@@ -9,10 +9,10 @@ from rest_framework.decorators import api_view
 from django.conf import settings
 import os
 # rotate to the chat bot file to import the files
-pathtochat = os.path.join(settings.BASE_DIR,'chat_bot_V1') 
+pathtochat = os.path.join(settings.BASE_DIR,'chat_bot_final') 
 import sys
 sys.path.insert(1, pathtochat)
-import test # class contain all require methods to create model , make predections of questions
+import predect # class contain all require methods to create model , make predections of questions
 
 
 # Create your views here. that handle requests
@@ -44,7 +44,7 @@ def api_chatbot(req,*arg,**kwargs):
     # res = test.predict_chat(req.data['message']) # for post request
     if(not req.GET.get("message")):
         return Response({"error":"missing the message"} , status=status.HTTP_400_BAD_REQUEST)
-    res = test.predict_chat(req.GET.get("message"))
+    res = predect.chatbot_response(req.GET.get("message"))
     return Response({"message":res} , status=status.HTTP_200_OK)
 
 ###
